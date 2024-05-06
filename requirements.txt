@@ -1,0 +1,6 @@
+bs4
+requests
+pandas
+selenium==4.9.1
+# undetected-chromedriver
+google-generativeai

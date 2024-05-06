@@ -1,0 +1,5 @@
+data/housing/raw/loozap/loozap_data.json filter=lfs diff=lfs merge=lfs -text
+data/housing/processed/structured/loozap_cleaned_extracted-property-attributes_gemini.json filter=lfs diff=lfs merge=lfs -text
+data/housing/processed/structured/archived/loozap_cleaned_extracted-property-attributes_gemini_ok.json filter=lfs diff=lfs merge=lfs -text
+data/housing/processed/structured/archived/loozap_cleaned_extracted-property-attributes_gemini.json filter=lfs diff=lfs merge=lfs -text
+data/housing/raw/loozap/archived/loozap_data_new.json filter=lfs diff=lfs merge=lfs -text

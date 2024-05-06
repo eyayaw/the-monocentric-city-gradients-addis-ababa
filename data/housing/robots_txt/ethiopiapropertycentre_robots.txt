@@ -1,0 +1,7 @@
+Sitemap: https://ethiopiapropertycentre.com/sitemaps/index.xml
+
+User-agent: trovitBot
+Disallow: /
+
+User-agent: *
+Disallow: *report/create*

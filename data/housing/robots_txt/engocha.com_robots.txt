@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>404 ERROR | Engocha.com</title>
+<meta property="og:site_name" content="Engocha">
+<meta property="og:title" content="404 ERROR | Engocha.com" />
+<meta name="description" content="404 ERROR | Engocha.com" />
+<meta property="og:description" content="404 ERROR | Engocha.com" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://engocha.com/public/social-cover-photo.jpg" />
+<link rel="preload" fetchpriority="high" as="image" href="https://engocha.com/public/social-cover-photo.jpg">
+<meta property="og:image:url" content="https://engocha.com/public/social-cover-photo.jpg" />
+<meta property="fb:app_id" content="230706870826237" />
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link media="all" type="text/css" rel="stylesheet" href="https://engocha.com/public/plugins/jqueryui/autocomplete.css">
+<link rel="apple-touch-icon" sizes="180x180" href="https://engocha.com/public/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="https://engocha.com/public/apple-touch-icon.png" sizes="32x32">
+<link rel="icon" type="image/png" href="https://engocha.com/public/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href=" https://engocha.com/public/manifest.json">
+<link rel="mask-icon" href="https://engocha.com/public/safari-pinned-tab.svg" color="#2e475e">
+<meta name="theme-color" content="#ffffff">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XHH2HKM4XJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XHH2HKM4XJ');
+</script>
+<script data-ad-client="ca-pub-7901871699911173" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<meta name="google-site-verification" content="lRFPMxHcpW2qwZqb9bLfmjmtFNC4Gcd_8VK8_Gm-SBg" />
+
+<script async src="https://fundingchoicesmessages.google.com/i/pub-7901871699911173?ers=1" nonce="HQzMsohappua05ZgpKZsIg"></script><script nonce="HQzMsohappua05ZgpKZsIg">(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
+
+
+
+
+
+
+<link media="all" type="text/css" rel="stylesheet" href="https://engocha.com/public/themes/default/bootstrap/css/bootstrap.min.css">
+<link media="all" type="text/css" rel="stylesheet" href="https://engocha.com/public/themes/default/custom.css?v=19">
+</head>
+<body class="nrm">
+<div class="wrapper">
+<header class="main-header">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="main-menu topheader">
+<div class="container">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="https://engocha.com"><img src="https://engocha.com/public/logo.png" class="logo-image" alt="Engocha.com Logo" /></a>
+<a href="https://engocha.com/listing/add" class="postmobile formobile"><i class="fa fa-btn fa-plus"></i></a>
+</div>
+<div id="navbar" class="navbar-collapse collapse" area-expanded="false">
+<ul class="nav navbar-nav">
+<li><a href="https://engocha.com">Home</a></li>
+<li><a class href="https://engocha.com/classifieds">Classifieds</a></li>
+<li><a class href="https://engocha.com/jobs">Jobs</a></li>
+<div class="searchsection">
+<form method="GET" action="https://engocha.com/search" accept-charset="UTF-8" style="display: inline-block;">
+<input class="form-control searchtext searchbox" name="qr" id="qr" value placeholder="I am Looking For" autocomplete="off">
+<button type="submit" class="btn btn-primary form-control"><i class="glyphicon right glyphicon-search"></i> Search</button>
+</form>
+</div>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li> <a href="https://engocha.com/auth">Login / Register</a>
+</li>
+<li class="headeremphasis"><a href="https://engocha.com/listing/add"><i class="fa fa-btn fa-plus"></i> Post / ያስተዋውቁ</a></li>
+</ul>
+</div>
+<div class="navbar formobile">
+<div class="searchsection">
+<form method="GET" action="https://engocha.com/search" accept-charset="UTF-8" style="display: inline-block;">
+<input class="form-control searchtext searchbox" name="qr" id="qr" value placeholder="I am Looking For" autocomplete="off">
+<button type="submit" class="btn btn-primary form-control"><i class="glyphicon right glyphicon-search"></i> Search</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+
+<div class="content-wrapper">
+
+<section class="content-header">
+<div class="container">
+</div>
+</section>
+
+<section class="content clearfix" id="maincontent">
+<div class="container">
+<div class="row fullwidth">
+<div class="maincontent clearfix ">
+<div class="row">
+<div class="col-md-12">
+<span style="margin: 10% auto 10%; text-align:center; display:block; width:100%; font-size:3em;">
+Category not found!<p></p>
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<footer class="main-footer" id="main-footer" style="padding-bottom: 45px;">
+<div class="container">
+<div class="col-md-4">
+<h3>About Us</h3>
+<p>Engocha.com is a marketplace where you can find new and used for sale or rent in Ethiopia. Engocha classified ads provides a platform to connect buyers and sellers. All data and information provided on this site is for informational purposes only.</p>
+</div>
+<div class="col-md-4">
+<h3>Categories</h3>
+<div class="col-md-4">
+<ul class="footerlinks">
+<li><a href="https://engocha.com/electronics" title="Electronics for sale &amp; price in Ethiopia">Electronics</a></li>
+<li><a href="https://engocha.com/mobile-phones" title="Mobile phones for sale and price in Ethiopia">Mobile Phones</a></li>
+<li><a href="https://engocha.com/laptops" title="Laptops for sale &amp; price in Ethiopia">Laptops</a></li>
+<li><a href="https://engocha.com/television" title="Television for sale &amp; price in Ethiopia">Television</a></li>
+</ul>
+</div>
+<div class="col-md-4">
+<ul class="footerlinks">
+<li><a href="https://engocha.com/cars-for-sale" title="Cars for sale &amp; price in Ethiopia">Cars</a></li>
+<li><a href="https://engocha.com/apartments-houses-for-sale" title="Apartments and houses for sale &amp; price in Ethiopia">Apartments and Houses for sale</a></li>
+<li><a href="https://engocha.com/real-estate" title="Real estate, properties for sale &amp; price in Ethiopia">Real estate</a></li>
+</ul>
+</div>
+<div class="col-md-4">
+<ul class="footerlinks">
+<li><a href="https://engocha.com/furniture" title="Furniture for sale &amp; price in Ethiopia">Furniture</a></li>
+<li><a href="https://engocha.com/fashion" title="Fashion for sale &amp; price in Ethiopia">Fashion</a></li>
+<li><a href="https://engocha.com/shares-stock" title="Shares and stock for sale &amp; price in Ethiopia">Shares &amp; Stock</a></li>
+</ul>
+</div>
+</div>
+<div class="col-md-4">
+<h3>Links</h3>
+<div class="col-md-6">
+<ul class="footerlinks">
+<li><a href="https://engocha.com">Home</a></li>
+<li><a href="https://engocha.com/auth">Login / Register</a></li>
+<li><a href="https://engocha.com/listing/add">Post / ያስተዋውቁ</a></li>
+<li><a href="https://engocha.com/classifieds/trending">Trending Listings</a></li>
+</ul>
+</div>
+<div class="col-md-6">
+<ul class="footerlinks">
+<li><a href="https://engocha.com/contact-us">Contact</a></li>
+<li><a href="https://engocha.com/about-us">About Us</a></li>
+<li><a href="https://engocha.com/terms-of-use">Terms of Use</a></li>
+<li><a href="https://engocha.com/privacy-policy">Privacy Policy</a></li>
+</ul>
+</div>
+</div>
+<div class="col-md-12" style="text-align: center; font-size: 14px; display: flex; justify-content: center; overflow: hidden;">
+<ul class="footersociallinks" style>
+<li><a class="facebook" target="_blank" href="https://www.facebook.com/engochaethiopia"><i class="fa fa-facebook"></i></a></li> <li><a class="telegram" target="_blank" href="https://t.me/realengocha"><i class="fa fa-telegram"></i></a></li> <li><a class="tiktok" target="_blank" href="https://www.tiktok.com/@engochamarketplace"><i class="fa fa-tiktok"></i></a></li> <li><a class="instagram" target="_blank" href="https://www.instagram.com/engochamarketplace/"><i class="fa fa-instagram"></i></a></li> <li><a class="linkedin" target="_blank" href="https://www.linkedin.com/showcase/engochaethiopia/"><i class="fa fa-linkedin"></i></a></li> </ul>
+</div>
+<div class="col-md-12" style="text-align: center; font-size: 14px; overflow: hidden;">Copyright 2024 © Engocha.com</div>
+<div class="pull-right hidden-xs hidden" id="PullRight" name="PullRight">
+</div>
+</footer></div>
+</div>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic:wght@400;600;700&family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet" rel="preload" as="style">
+<link media="all" type="text/css" rel="stylesheet" href="https://engocha.com/public/themes/default/fontawesome/css/font-awesome.css">
+<script src="https://engocha.com/public/plugins/jquery/jquery.min.js"></script>
+<script src="https://engocha.com/public/themes/default/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://engocha.com/public/plugins/jqueryui/jquery-ui.min.js"></script>
+<script>
+  var lastScrollTop = 0;
+  $(window).scroll(function() {
+   var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+   if (st > lastScrollTop) {
+    $('.topheader').addClass("default-place");
+    $('.topheader').removeClass("fixed-header");
+  }
+  else if (st < lastScrollTop) 
+  {
+    if(window.pageYOffset > 220)
+    {
+      $('.topheader').removeClass("default-place");
+      $('.topheader').addClass("fixed-header");
+    }
+    else
+    {
+      if(window.pageYOffset < 150)
+      {
+        $('.topheader').addClass("default-place");
+        $('.topheader').removeClass("fixed-header");
+      }
+    }
+   } // else was horizontal scroll
+   lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+
+ });
+</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(".searchbox").autocomplete({
+      source: function(request, response) {
+        $.ajax({
+          url: "https://engocha.com/gethsearchitems",
+          dataType: "json",
+          data: {
+            term : request.term
+          },
+          success: function(data) {
+            response($.map(data, function(object){
+              return {
+                label: object.value,
+                value: object.id
+              };
+            }));
+
+          }
+        });
+      },
+      minLength: 2,
+
+      select: function( event, ui ) {
+       $('.searchbox').val(  ui.item.label ); 
+       $('#searchid').val( ui.item.value ); 
+       return false;
+     } ,
+
+     messages: {
+      noResults: '',
+      results: function() {}
+    }
+
+  });
+  });
+</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#qr2").autocomplete({
+      source: function(request, response) {
+        $.ajax({
+          url: "https://engocha.com/gethsearchitems",
+          dataType: "json",
+          data: {
+            term : request.term
+          },
+          success: function(data) {
+            response($.map(data, function(object){
+              return {
+                label: object.value,
+                value: object.id
+              };
+            }));
+
+          }
+        });
+      },
+      minLength: 2,
+
+      select: function( event, ui ) {
+       $('#qr2').val(  ui.item.label ); 
+       $('#searchid2').val( ui.item.value ); 
+       return false;
+     } ,
+
+     messages: {
+      noResults: '',
+      results: function() {}
+    }
+
+  });
+  });
+</script>
+</body>
+</html>

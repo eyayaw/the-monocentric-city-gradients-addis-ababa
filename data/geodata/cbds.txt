@@ -1,0 +1,4 @@
+lat,lng,name,short_name
+9.0101508,38.7612682,Meskel Square,Meskel Square
+9.0330138,38.7633215,Arat Kilo Patriots Monument,Arat Kilo
+9.035772,38.7502069,Menelik Square,Piassa
