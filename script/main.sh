@@ -9,7 +9,7 @@ python3 ./script/extract_property_attributes_gemini_async.py
 python3 ./script/tidy_extracted_property_attributes_gemini.py
 
 # 4. tidy datasets
-R -f ./script/tidy_extracted_property_attributes_gemini.R
+R -f ./script/tidy_datasets.R
 
 # 5. geocoding
 # 5.1. clean property addresses

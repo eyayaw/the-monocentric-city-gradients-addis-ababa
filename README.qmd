@@ -55,24 +55,48 @@ The data used in the analysis constitutes two main parts: real estate data and b
 
 ### Housing data
 
-::: callout-warning
-The repository currently contains no data. However, the data will be made available soon. If you urgently need the data, please send me an email.
+::: callout-important
+
+## Data availability
+
+The dataset has been published on Zenodo and can be accessed [here](https://zenodo.org/records/11205969).
 :::
 
+<details>
+<summary>Variable description</summary>
+
+```{r}
+#| label: tbl-var-description
+#| tbl-cap: "Variable description"
+#| output: asis
+
+library(tinytable)
+
+description = read.csv("./data/data_description.csv")
+description |>
+  tt() |>
+  format_tt(markdown = TRUE, escape = TRUE) |>
+  theme_tt(theme = "resize", direction = "down")
+```
+</details>
+
+
+If you want to reproduce the data using the scripts, you can follow the steps below:
+
 The primary dataset for the analysis is constructed from [data/housing/processed/listings_cleaned.csv](data/housing/processed/listings_cleaned.csv), a cleaned version of the scraped data from all providers. The raw data is available in [data/housing/raw](data/housing/raw) for the providers included in the analysis. Missing attributes in the dataset are imputed using `gemini pro`, and the imputed data can be found in [data/housing/processed/structured/tidy](data/housing/processed/structured/tidy/). Finally, property addresses are geocoded using [Google Places API](https://developers.google.com/maps/documentation/places/web-service) and [OSM nominatim](https://nominatim.openstreetmap.org/ui/search.html). The georeferenced data is available in [data/housing/processed/tidy/listings_cleaned_tidy\_\_geocoded.csv](data/housing/processed/tidy/listings_cleaned_tidy__geocoded.csv).
+
 
 ::: callout-important
 During web scraping, I tried to respect the `robots.txt` file of the website. See the contents in [data/housing/robots_txt](data/housing/robots_txt/).
 :::
 
 <details>
-<summary>Click here for a list of real estate providers in Addis</summary>
+<summary>A list of real estate providers in Addis</summary>
 
 ```{r}
 #| label: tbl-real-estate-providers
 #| tbl-cap: "List of online real estate providers"
 #| output: asis
-library(tinytable)
 
 providers = read.csv("./data/housing/real_estate_providers.csv", header = TRUE)
 providers[] = lapply(providers, trimws)
@@ -102,7 +126,7 @@ The building variables are extracted from two sources:
 
 ## Citation
 
-Please cite the paper for any use of the data or code in this repository.
+Please cite the paper or dataset for any use of the code or data in this repository.
 
 ```bibtex
 @article{Beze_2024,
@@ -115,4 +139,17 @@ Please cite the paper for any use of the data or code in this repository.
   author = {Beze,  Eyayaw},
   year = {2024}
 }
+```
+
+```bibtex
+@misc{Beze_2024_dataset,
+  title = {Georeferenced real estate data for Addis Ababa},
+  author = {Beze,  Eyayaw},
+  year = {2024},
+  doi = {10.5281/ZENODO.11205969},
+  url = {https://zenodo.org/doi/10.5281/zenodo.11205969},
+  publisher = {Zenodo},
+  copyright = {Creative Commons Attribution 4.0 International}
+}
+
 ```
