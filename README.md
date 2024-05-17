@@ -6,10 +6,25 @@
 
 > [!NOTE]
 >
-> This repo contains replication code and data for the paper [Beze
+> This repo contains **replication code** and **data** for the paper
+> [Beze
 > (2024)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4803607).
+>
+> The real estate dataset is available on
+> [Zenodo](https://zenodo.org/records/11205969). For more details, see
+> the [data section](#housing-data) below.
 
 ## Requirements
+
+> [!TIP]
+>
+> The order in which the scripts should be run is provided in
+> [script/main.sh](./script/main.sh).
+
+<details>
+<summary>
+Expand
+</summary>
 
 - R 4.3.3
 
@@ -30,8 +45,7 @@
 > uv pip install -r requirements.txt
 > ```
 
-- The order in which the scripts should be run is provided in
-  [script/main.sh](./script/main.sh).
+</details>
 
 ## Data
 
@@ -52,75 +66,78 @@ data and building footprint data.
 Variable description
 </summary>
 
-| var                            | description                                                                       | group                                            | remark                                                                                                                                                          |
-|--------------------------------|-----------------------------------------------------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| id                             | ID of the property (prepended with the provider name)                             |                                                  | The ID uniquely identifies properties; in the raw data, it may not have been, even within a provider.                                                           |
-| listing_type                   | Listing type (for rent or sale etc.)                                              | listing and property types                       | Parsed if not provided                                                                                                                                          |
-| property_type                  | Property type (house, apartment, etc.)                                            | listing and property types                       | Parsed if not provided                                                                                                                                          |
-| price                          | Price of the property in local currency (Ethiopian Birr (ETB))                    | price                                            | Other currency units are converted to ETB                                                                                                                       |
-| price_type                     | The type of price (fixed, negotiable, etc.)                                       | price                                            | Parsed if not provided                                                                                                                                          |
-| price_adj                      | Price of the property adjusted for inflation                                      | price                                            |                                                                                                                                                                 |
-| price_sqm                      | Price of the property per square meter                                            | price                                            |                                                                                                                                                                 |
-| price_adj_sqm                  | Price of the property per square meter adjusted for inflation                     | price                                            |                                                                                                                                                                 |
-| size_sqm                       | Floor area of the property in square meters                                       | size                                             | Imputed if not provided                                                                                                                                         |
-| size_sqm_is_imputed            | Yes if the floor area of the property was imputed                                 | size                                             |                                                                                                                                                                 |
-| plot_size                      | Lot size of the property in square meters                                         | size                                             |                                                                                                                                                                 |
-| address                        | Address of the property (untouched as provided)                                   | address                                          |                                                                                                                                                                 |
-| address_main                   | Address of the property (manually corrected or cleaned)                           | address                                          | The address of the property has been manually corrected or cleaned. Addresses for properties have been manually extracted from the description of the property. |
-| address_alt                    | Address of the property (extracted with Gemini Pro)                               | address                                          | Equals to address_main if extraction failed or null                                                                                                             |
-| unique_address_grp             | Address group counter                                                             | address                                          | This variable identifies properties with the same addresses.                                                                                                    |
-| place_name                     | The name of the geocoded place, from the geocoding api,address                    | address                                          |                                                                                                                                                                 |
-| place_id                       | The id of the geocoded place                                                      | address                                          |                                                                                                                                                                 |
-| is_lng_lat_sampled             | Yes if lng,lat is sampled                                                         | address                                          | When the address is broad like Bole”                                                                                                                            |
-| or even “Addis Ababa”          | a random lng                                                                      | lat sampled from the subcity or Addis polygons.” |                                                                                                                                                                 |
-| subcity                        | The subcity name                                                                  | address                                          |                                                                                                                                                                 |
-| lng                            | The longitude of the property location                                            | address                                          |                                                                                                                                                                 |
-| lat                            | The latitude of the property location                                             | address                                          |                                                                                                                                                                 |
-| date_published                 | The date the property was published on the website                                | time                                             |                                                                                                                                                                 |
-| time                           | The month (formatted year-month-01) the property was published on the website     | time                                             |                                                                                                                                                                 |
-| year                           | The year the property was published on the website                                | time                                             |                                                                                                                                                                 |
-| quarter                        | The quarter the property was published on the website                             | time                                             |                                                                                                                                                                 |
-| title                          | The title of the property ad                                                      | description                                      |                                                                                                                                                                 |
-| description                    | The description of the property ad                                                | description                                      |                                                                                                                                                                 |
-| num_bedrooms                   | The number of bedrooms in the property                                            | features                                         |                                                                                                                                                                 |
-| num_bathrooms                  | The number of bathrooms in the property                                           | features                                         |                                                                                                                                                                 |
-| num_images                     | The number of images in the property ad                                           | features                                         |                                                                                                                                                                 |
-| features                       | A list of additional features of the property                                     | features                                         | A semi-colon separated list of features                                                                                                                         |
-| condition                      | The condition of the property                                                     | features                                         |                                                                                                                                                                 |
-| furnishing                     | The furnishing level of the property                                              | features                                         | E.g. fully furnished, semi-furnished, etc.                                                                                                                      |
-| pets                           | Yes if pets are allowed in the property                                           | features                                         | Applicable to rentals. Parsed if not provided                                                                                                                   |
-| floor                          | The floor location of the property                                                | features                                         | Applicable to apartments. It may refer to the number of floors in some cases.                                                                                   |
-| garden                         | Yes if the property has a garden                                                  | features                                         | Parsed if not provided                                                                                                                                          |
-| parking                        | Yes if the property has parking                                                   | features                                         | Parsed if not provided                                                                                                                                          |
-| kitchen                        | Yes if the property has a kitchen                                                 | features                                         | Parsed if not provided                                                                                                                                          |
-| elevator                       | Yes if the property has an elevator                                               | features                                         | Parsed if not provided                                                                                                                                          |
-| balcony                        | Yes if the property has a balcony                                                 | features                                         | Parsed if not provided                                                                                                                                          |
-| water                          | Yes if the property has water                                                     | features                                         | Parsed if not provided                                                                                                                                          |
-| power                          | Yes if the property has power                                                     | features                                         | Parsed if not provided                                                                                                                                          |
-| seller_address                 | The address of the seller mentioned in the ad                                     |                                                  |                                                                                                                                                                 |
-| dist_meskel_square             | The distance from the property location to the CBD (Meskel Square) in km          | Distance to the CBD                              |                                                                                                                                                                 |
-| dist_arat_kilo                 | The distance from the property location to the CBD (Arat Kilo) in km              | Distance to the CBD                              |                                                                                                                                                                 |
-| dist_piassa                    | The distance from the property location to the CBD (Piassa) in km                 | Distance to the CBD                              |                                                                                                                                                                 |
-| exchange_rate                  | Monthly Birr to USD exchange rates                                                |                                                  | Source: National Bank of Ethiopia                                                                                                                               |
-| misclassified_or_outliers_flag | Yes if the property’s listing or type are thought to be misclassified or outlier. |                                                  |                                                                                                                                                                 |
+| var                            | description                                                                       | group                      | remark                                                                                                                                                          |
+|--------------------------------|-----------------------------------------------------------------------------------|----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| id                             | ID of the property (prepended with the provider name)                             |                            | The ID uniquely identifies properties; in the raw data, it may not have been, even within a provider.                                                           |
+| listing_type                   | Listing type (for rent or sale etc.)                                              | listing and property types | Parsed if not provided                                                                                                                                          |
+| property_type                  | Property type (house, apartment, etc.)                                            | listing and property types | Parsed if not provided                                                                                                                                          |
+| price                          | Price of the property in local currency (Ethiopian Birr (ETB))                    | price                      | Other currency units are converted to ETB                                                                                                                       |
+| price_type                     | The type of price (fixed, negotiable, etc.)                                       | price                      | Parsed if not provided                                                                                                                                          |
+| price_adj                      | Price of the property adjusted for inflation                                      | price                      |                                                                                                                                                                 |
+| price_sqm                      | Price of the property per square meter                                            | price                      |                                                                                                                                                                 |
+| price_adj_sqm                  | Price of the property per square meter adjusted for inflation                     | price                      |                                                                                                                                                                 |
+| size_sqm                       | Floor area of the property in square meters                                       | size                       | Imputed if not provided                                                                                                                                         |
+| size_sqm_is_imputed            | Yes if the floor area of the property was imputed                                 | size                       |                                                                                                                                                                 |
+| plot_size                      | Lot size of the property in square meters                                         | size                       |                                                                                                                                                                 |
+| address                        | Address of the property (untouched as provided)                                   | address                    |                                                                                                                                                                 |
+| address_main                   | Address of the property (manually corrected or cleaned)                           | address                    | The address of the property has been manually corrected or cleaned. Addresses for properties have been manually extracted from the description of the property. |
+| address_alt                    | Address of the property (extracted with Gemini Pro)                               | address                    | Equals to address_main if extraction failed or null                                                                                                             |
+| unique_address_grp             | Address group counter                                                             | address                    | This variable identifies properties with the same addresses.                                                                                                    |
+| place_name                     | The name of the geocoded place, from the geocoding api,address                    | address                    |                                                                                                                                                                 |
+| place_id                       | The id of the geocoded place                                                      | address                    |                                                                                                                                                                 |
+| subcity                        | The subcity name                                                                  | address                    |                                                                                                                                                                 |
+| lng                            | The longitude of the property location                                            | address                    |                                                                                                                                                                 |
+| lat                            | The latitude of the property location                                             | address                    |                                                                                                                                                                 |
+| is_lng_lat_sampled             | Yes if lng,lat is sampled                                                         | address                    | When the address is broad like “Bole” or even “Addis Ababa” a random (lng,lat) can be sampled from the subcity or Addis polygons.”                              |
+| date_published                 | The date the property was published on the website                                | time                       |                                                                                                                                                                 |
+| time                           | The month (formatted year-month-01) the property was published on the website     | time                       |                                                                                                                                                                 |
+| year                           | The year the property was published on the website                                | time                       |                                                                                                                                                                 |
+| quarter                        | The quarter the property was published on the website                             | time                       |                                                                                                                                                                 |
+| title                          | The title of the property ad                                                      | description                |                                                                                                                                                                 |
+| description                    | The description of the property ad                                                | description                |                                                                                                                                                                 |
+| num_bedrooms                   | The number of bedrooms in the property                                            | features                   |                                                                                                                                                                 |
+| num_bathrooms                  | The number of bathrooms in the property                                           | features                   |                                                                                                                                                                 |
+| num_images                     | The number of images in the property ad                                           | features                   |                                                                                                                                                                 |
+| features                       | A list of additional features of the property                                     | features                   | A list of additional features, unstructured.                                                                                                                    |
+| condition                      | The condition of the property                                                     | features                   |                                                                                                                                                                 |
+| furnishing                     | The furnishing level of the property                                              | features                   | E.g. fully furnished, semi-furnished, etc.                                                                                                                      |
+| pets                           | Yes if pets are allowed in the property                                           | features                   | Applicable to rentals. Parsed if not provided                                                                                                                   |
+| floor                          | The floor location of the property                                                | features                   | Applicable to apartments. It may refer to the number of floors in some cases.                                                                                   |
+| garden                         | Yes if the property has a garden                                                  | features                   | Parsed if not provided                                                                                                                                          |
+| parking                        | Yes if the property has parking                                                   | features                   | Parsed if not provided                                                                                                                                          |
+| kitchen                        | Yes if the property has a kitchen                                                 | features                   | Parsed if not provided                                                                                                                                          |
+| elevator                       | Yes if the property has an elevator                                               | features                   | Parsed if not provided                                                                                                                                          |
+| balcony                        | Yes if the property has a balcony                                                 | features                   | Parsed if not provided                                                                                                                                          |
+| water                          | Yes if the property has water                                                     | features                   | Parsed if not provided                                                                                                                                          |
+| power                          | Yes if the property has electricity                                               | features                   | Parsed if not provided                                                                                                                                          |
+| seller_address                 | The address of the seller mentioned in the ad                                     |                            | Phone number, email or social media information about the seller/agent.                                                                                         |
+| dist_meskel_square             | The distance from the property location to the CBD (Meskel Square) in km          | Distance to the CBD        |                                                                                                                                                                 |
+| dist_arat_kilo                 | The distance from the property location to the CBD (Arat Kilo) in km              | Distance to the CBD        |                                                                                                                                                                 |
+| dist_piassa                    | The distance from the property location to the CBD (Piassa) in km                 | Distance to the CBD        |                                                                                                                                                                 |
+| exchange_rate                  | Monthly Birr to USD exchange rates                                                |                            | Source: National Bank of Ethiopia                                                                                                                               |
+| misclassified_or_outliers_flag | Yes if the property’s listing or type are thought to be misclassified or outlier. |                            |                                                                                                                                                                 |
 
 </details>
 
 If you want to reproduce the data using the scripts, you can follow the
-steps below:
+steps in [script/main.sh](./script/main.sh).
 
-The primary dataset for the analysis is constructed from
-[data/housing/processed/listings_cleaned.csv](data/housing/processed/listings_cleaned.csv),
-a cleaned version of the scraped data from all providers. The raw data
-is available in [data/housing/raw](data/housing/raw) for the providers
-included in the analysis. Missing attributes in the dataset are imputed
-using `gemini pro`, and the imputed data can be found in
-[data/housing/processed/structured/tidy](data/housing/processed/structured/tidy/).
-Finally, property addresses are geocoded using [Google Places
-API](https://developers.google.com/maps/documentation/places/web-service)
-and [OSM nominatim](https://nominatim.openstreetmap.org/ui/search.html).
-The georeferenced data is available in
-[data/housing/processed/tidy/listings_cleaned_tidy\_\_geocoded.csv](data/housing/processed/tidy/listings_cleaned_tidy__geocoded.csv).
+> If you run the scripts successfully, you will have: The primary
+> dataset for the analysis is constructed from
+> [data/housing/processed/listings_cleaned.csv](data/housing/processed/listings_cleaned.csv),
+> a cleaned version of the scraped data from all providers. The raw data
+> is available in [data/housing/raw](data/housing/raw) for the providers
+> included in the analysis. Missing attributes in the dataset are
+> imputed using
+> [`Gemini Pro`](https://github.com/google-gemini/generative-ai-python),
+> and the imputed data can be found in
+> [data/housing/processed/structured/tidy](data/housing/processed/structured/tidy/).
+> Finally, property addresses are geocoded using [Google Places
+> API](https://developers.google.com/maps/documentation/places/web-service)
+> and [OSM
+> nominatim](https://nominatim.openstreetmap.org/ui/search.html). The
+> georeferenced data is available in
+> [data/housing/processed/tidy/listings_cleaned_tidy\_\_geocoded.csv](data/housing/processed/tidy/listings_cleaned_tidy__geocoded.csv).
 
 > [!IMPORTANT]
 >
