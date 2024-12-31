@@ -13,6 +13,11 @@
 > The real estate dataset is available on
 > [Zenodo](https://zenodo.org/records/11205969). For more details, see
 > the [data section](#housing-data) below.
+>
+> > Listen to an ai-generated podcast about this project, thanks to
+> > [NotebookLM](https://notebooklm.google.com).
+>
+> [](https://github-production-user-asset-6210df.s3.amazonaws.com/49317723/399504592-cd420903-d663-453b-8fad-48988c7df2c5.webm)
 
 ## Requirements
 
@@ -22,11 +27,13 @@
 > [script/main.sh](./script/main.sh).
 
 <details>
+
 <summary>
+
 Expand
 </summary>
 
-- R 4.3.3
+- R 4.4.1
 
 > The necessary R packages are listed in the `renv.lock` file. You can
 > install them by running the following command in the R console:
@@ -36,7 +43,7 @@ Expand
 > renv::restore()
 > ```
 
-- Python 3.12
+- Python 3.13
 
 > The necessary Python packages are listed in the `requirements.txt`
 > file. You can install them with [uv](https://github.com/astral-sh/uv):
@@ -62,60 +69,68 @@ data and building footprint data.
 > [here](https://zenodo.org/records/11205969).
 
 <details>
+
 <summary>
+
 Variable description
 </summary>
 
-| var                            | description                                                                       | group                      | remark                                                                                                                                                          |
-|--------------------------------|-----------------------------------------------------------------------------------|----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| id                             | ID of the property (prepended with the provider name)                             |                            | The ID uniquely identifies properties; in the raw data, it may not have been, even within a provider.                                                           |
-| listing_type                   | Listing type (for rent or sale etc.)                                              | listing and property types | Parsed if not provided                                                                                                                                          |
-| property_type                  | Property type (house, apartment, etc.)                                            | listing and property types | Parsed if not provided                                                                                                                                          |
-| price                          | Price of the property in local currency (Ethiopian Birr (ETB))                    | price                      | Other currency units are converted to ETB                                                                                                                       |
-| price_type                     | The type of price (fixed, negotiable, etc.)                                       | price                      | Parsed if not provided                                                                                                                                          |
-| price_adj                      | Price of the property adjusted for inflation                                      | price                      |                                                                                                                                                                 |
-| price_sqm                      | Price of the property per square meter                                            | price                      |                                                                                                                                                                 |
-| price_adj_sqm                  | Price of the property per square meter adjusted for inflation                     | price                      |                                                                                                                                                                 |
-| size_sqm                       | Floor area of the property in square meters                                       | size                       | Imputed if not provided                                                                                                                                         |
-| size_sqm_is_imputed            | Yes if the floor area of the property was imputed                                 | size                       |                                                                                                                                                                 |
-| plot_size                      | Lot size of the property in square meters                                         | size                       |                                                                                                                                                                 |
-| address                        | Address of the property (untouched as provided)                                   | address                    |                                                                                                                                                                 |
-| address_main                   | Address of the property (manually corrected or cleaned)                           | address                    | The address of the property has been manually corrected or cleaned. Addresses for properties have been manually extracted from the description of the property. |
-| address_alt                    | Address of the property (extracted with Gemini Pro)                               | address                    | Equals to address_main if extraction failed or null                                                                                                             |
-| unique_address_grp             | Address group counter                                                             | address                    | This variable identifies properties with the same addresses.                                                                                                    |
-| place_name                     | The name of the geocoded place, from the geocoding api,address                    | address                    |                                                                                                                                                                 |
-| place_id                       | The id of the geocoded place                                                      | address                    |                                                                                                                                                                 |
-| subcity                        | The subcity name                                                                  | address                    |                                                                                                                                                                 |
-| lng                            | The longitude of the property location                                            | address                    |                                                                                                                                                                 |
-| lat                            | The latitude of the property location                                             | address                    |                                                                                                                                                                 |
-| is_lng_lat_sampled             | Yes if lng,lat is sampled                                                         | address                    | When the address is broad like “Bole” or even “Addis Ababa” a random (lng,lat) can be sampled from the subcity or Addis polygons.”                              |
-| date_published                 | The date the property was published on the website                                | time                       |                                                                                                                                                                 |
-| time                           | The month (formatted year-month-01) the property was published on the website     | time                       |                                                                                                                                                                 |
-| year                           | The year the property was published on the website                                | time                       |                                                                                                                                                                 |
-| quarter                        | The quarter the property was published on the website                             | time                       |                                                                                                                                                                 |
-| title                          | The title of the property ad                                                      | description                |                                                                                                                                                                 |
-| description                    | The description of the property ad                                                | description                |                                                                                                                                                                 |
-| num_bedrooms                   | The number of bedrooms in the property                                            | features                   |                                                                                                                                                                 |
-| num_bathrooms                  | The number of bathrooms in the property                                           | features                   |                                                                                                                                                                 |
-| num_images                     | The number of images in the property ad                                           | features                   |                                                                                                                                                                 |
-| features                       | A list of additional features of the property                                     | features                   | A list of additional features, unstructured.                                                                                                                    |
-| condition                      | The condition of the property                                                     | features                   |                                                                                                                                                                 |
-| furnishing                     | The furnishing level of the property                                              | features                   | E.g. fully furnished, semi-furnished, etc.                                                                                                                      |
-| pets                           | Yes if pets are allowed in the property                                           | features                   | Applicable to rentals. Parsed if not provided                                                                                                                   |
-| floor                          | The floor location of the property                                                | features                   | Applicable to apartments. It may refer to the number of floors in some cases.                                                                                   |
-| garden                         | Yes if the property has a garden                                                  | features                   | Parsed if not provided                                                                                                                                          |
-| parking                        | Yes if the property has parking                                                   | features                   | Parsed if not provided                                                                                                                                          |
-| kitchen                        | Yes if the property has a kitchen                                                 | features                   | Parsed if not provided                                                                                                                                          |
-| elevator                       | Yes if the property has an elevator                                               | features                   | Parsed if not provided                                                                                                                                          |
-| balcony                        | Yes if the property has a balcony                                                 | features                   | Parsed if not provided                                                                                                                                          |
-| water                          | Yes if the property has water                                                     | features                   | Parsed if not provided                                                                                                                                          |
-| power                          | Yes if the property has electricity                                               | features                   | Parsed if not provided                                                                                                                                          |
-| seller_address                 | The address of the seller mentioned in the ad                                     |                            | Phone number, email or social media information about the seller/agent.                                                                                         |
-| dist_meskel_square             | The distance from the property location to the CBD (Meskel Square) in km          | Distance to the CBD        |                                                                                                                                                                 |
-| dist_arat_kilo                 | The distance from the property location to the CBD (Arat Kilo) in km              | Distance to the CBD        |                                                                                                                                                                 |
-| dist_piassa                    | The distance from the property location to the CBD (Piassa) in km                 | Distance to the CBD        |                                                                                                                                                                 |
-| exchange_rate                  | Monthly Birr to USD exchange rates                                                |                            | Source: National Bank of Ethiopia                                                                                                                               |
-| misclassified_or_outliers_flag | Yes if the property’s listing or type are thought to be misclassified or outlier. |                            |                                                                                                                                                                 |
+<div id="tbl-var-description">
+
+Table 1: Variable description
+
+| var | description | group | remark |
+|----|----|----|----|
+| id | ID of the property (prepended with the provider name) |  | The ID uniquely identifies properties; in the raw data, it may not have been, even within a provider. |
+| listing_type | Listing type (for rent or sale etc.) | listing and property types | Parsed if not provided |
+| property_type | Property type (house, apartment, etc.) | listing and property types | Parsed if not provided |
+| price | Price of the property in local currency (Ethiopian Birr (ETB)) | price | Other currency units are converted to ETB |
+| price_type | The type of price (fixed, negotiable, etc.) | price | Parsed if not provided |
+| price_adj | Price of the property adjusted for inflation | price |  |
+| price_sqm | Price of the property per square meter | price |  |
+| price_adj_sqm | Price of the property per square meter adjusted for inflation | price |  |
+| size_sqm | Floor area of the property in square meters | size | Imputed if not provided |
+| size_sqm_is_imputed | Yes if the floor area of the property was imputed | size |  |
+| plot_size | Lot size of the property in square meters | size |  |
+| address | Address of the property (untouched as provided) | address |  |
+| address_main | Address of the property (manually corrected or cleaned) | address | The address of the property has been manually corrected or cleaned. Addresses for properties have been manually extracted from the description of the property. |
+| address_alt | Address of the property (extracted with Gemini Pro) | address | Equals to address_main if extraction failed or null |
+| unique_address_grp | Address group counter | address | This variable identifies properties with the same addresses. |
+| place_name | The name of the geocoded place, from the geocoding api,address | address |  |
+| place_id | The id of the geocoded place | address |  |
+| subcity | The subcity name | address |  |
+| lng | The longitude of the property location | address |  |
+| lat | The latitude of the property location | address |  |
+| is_lng_lat_sampled | Yes if lng,lat is sampled | address | When the address is broad like “Bole” or even “Addis Ababa” a random (lng,lat) can be sampled from the subcity or Addis polygons.” |
+| date_published | The date the property was published on the website | time |  |
+| time | The month (formatted year-month-01) the property was published on the website | time |  |
+| year | The year the property was published on the website | time |  |
+| quarter | The quarter the property was published on the website | time |  |
+| title | The title of the property ad | description |  |
+| description | The description of the property ad | description |  |
+| num_bedrooms | The number of bedrooms in the property | features |  |
+| num_bathrooms | The number of bathrooms in the property | features |  |
+| num_images | The number of images in the property ad | features |  |
+| features | A list of additional features of the property | features | A list of additional features, unstructured. |
+| condition | The condition of the property | features |  |
+| furnishing | The furnishing level of the property | features | E.g. fully furnished, semi-furnished, etc. |
+| pets | Yes if pets are allowed in the property | features | Applicable to rentals. Parsed if not provided |
+| floor | The floor location of the property | features | Applicable to apartments. It may refer to the number of floors in some cases. |
+| garden | Yes if the property has a garden | features | Parsed if not provided |
+| parking | Yes if the property has parking | features | Parsed if not provided |
+| kitchen | Yes if the property has a kitchen | features | Parsed if not provided |
+| elevator | Yes if the property has an elevator | features | Parsed if not provided |
+| balcony | Yes if the property has a balcony | features | Parsed if not provided |
+| water | Yes if the property has water | features | Parsed if not provided |
+| power | Yes if the property has electricity | features | Parsed if not provided |
+| seller_address | The address of the seller mentioned in the ad |  | Phone number, email or social media information about the seller/agent. |
+| dist_meskel_square | The distance from the property location to the CBD (Meskel Square) in km | Distance to the CBD |  |
+| dist_arat_kilo | The distance from the property location to the CBD (Arat Kilo) in km | Distance to the CBD |  |
+| dist_piassa | The distance from the property location to the CBD (Piassa) in km | Distance to the CBD |  |
+| exchange_rate | Monthly Birr to USD exchange rates |  | Source: National Bank of Ethiopia |
+| misclassified_or_outliers_flag | Yes if the property’s listing or type are thought to be misclassified or outlier. |  |  |
+
+</div>
 
 </details>
 
@@ -146,51 +161,59 @@ steps in [script/main.sh](./script/main.sh).
 > [data/housing/robots_txt](data/housing/robots_txt/).
 
 <details>
+
 <summary>
+
 A list of real estate providers in Addis
 </summary>
 
-| name                                                                                                           | num_ads |
-|----------------------------------------------------------------------------------------------------------------|---------|
-| [Loozap Ethiopia](https://et.loozap.com/category/real-estate-house-apartment-and-land)                         | 75358   |
-| [Cari Africa Homes](https://homes.et.cari.africa/)                                                             | 42612   |
-| [AfroTie](https://play.google.com/store/apps/details?id=com.ewaywednesday.amoge.ewaywednesday&hl=en_US&gl=US)  | 30000   |
-| [JIji](https://jiji.com.et/real-estate)                                                                        | 12272   |
-| [Qefira](https://web.archive.org/web/20230530142104/https://www.qefira.com/property-rentals-sales/addis-ababa) | 8121    |
-| [Ethiopia Property Centre](https://ethiopiapropertycentre.com/addis-ababa)                                     | 3649    |
-| [Engocha](https://engocha.com/classifieds)                                                                     | 2059    |
-| [Real Ethio](https://www.realethio.com/search-result-page/?location%5B%5D=addis-ababa)                         | 1585    |
-| [Airbnb Addis Ababa](https://www.airbnb.com/s/Addis%20Ababa-Ababa--Ethiopia/homes?adults=)                     | 1000    |
-| [EthiopianHome](https://www.ethiopianhome.com/city/addis_ababa-1/)                                             | 990     |
-| [Ethiopian Properties](https://www.ethiopianproperties.com/property-type/residential/)                         | 880     |
-| [Sarrbet](https://sarrbet.com/with-list-layout/)                                                               | 741     |
-| [Ethiopia Realty](https://ethiopiarealty.com/search-results/?location%5B%5D=addis-ababa)                       | 717     |
-| [Ermithe Ethiopia](https://ermitheethiopia.com/all-ads/listing-category/property/)                             | 645     |
-| [LiveEthio](https://livingethio.com/site/property)                                                             | 625     |
-| [ZeGebeya.com](https://zegebeya.com/properties/)                                                               | 560     |
-| [Zerzir](https://zerzir.com/ads/real-estate/)                                                                  | 539     |
-| [Real Addis](https://www.realaddis.com/property-search/)                                                       | 513     |
-| [Beten](https://betenethiopia.com/)                                                                            | 495     |
-| [Kemezor](https://et.kemezor.com/products?type=house&city=addis%20ababa)                                       | 434     |
-| [HahuZon](https://hahuzon.com/listing-category/property-rentals-sales/)                                        | 400     |
-| [Ethiobetoch](https://www.ethiobetoch.com/propertylisting)                                                     | 315     |
-| [Verenda](https://www.verenda.et/)                                                                             | 285     |
-| [Mondinion](https://www.mondinion.com/Real_Estate/country/Ethiopia/)                                           | 268     |
-| [Yegna Home](https://yegnahome.com/search-result-page?propertyType=Apartment)                                  | 247     |
-| [Expat](https://www.expat.com/en/housing/africa/ethiopia/addis-ababa/)                                         | 233     |
-| [Keys to Addis](https://keystoaddis.com/search-results/?keyword=&location%5B%5D=addis-ababa)                   | 219     |
-| [Ebuy](https://www.ebuy.et/properties?type=property)                                                           | 216     |
-| [Addis Agents](https://rentinaddisagent.com/listing/)                                                          | 195     |
-| [Rent in Addis Agent](https://www.addisagents.com/property-types/residential/)                                 | 175     |
-| [Betoch](https://www.betoch.com/property/)                                                                     | 126     |
-| [Sheger Home](https://shegerhome.com/)                                                                         | 120     |
-| [Ethio Broker](https://www.ethiobroker.com/property/filter?is_rental=0)                                        | 105     |
-| [Betbegara](https://www.betbegara.com/)                                                                        | 83      |
-| [Addis Property Listings](https://addispropertylistings.com/all-properties)                                    | 76      |
-| [Shega Home](https://shegahome.com/properties)                                                                 | 60      |
-| [Realtor Ethiopia](https://realtor.com.et/store/)                                                              | 33      |
-| [Addis Gojo](https://addisgojo.com)                                                                            | 32      |
-| Notes: The number of ads is as of April 2024. Qefira shut down in June 2023.                                   |         |
+<div id="tbl-real-estate-providers">
+
+Table 2: List of online real estate providers
+
+| name | num_ads |
+|----|----|
+| [Loozap Ethiopia](https://et.loozap.com/category/real-estate-house-apartment-and-land) | 75358 |
+| [Cari Africa Homes](https://homes.et.cari.africa/) | 42612 |
+| [AfroTie](https://play.google.com/store/apps/details?id=com.ewaywednesday.amoge.ewaywednesday&hl=en_US&gl=US) | 30000 |
+| [JIji](https://jiji.com.et/real-estate) | 12272 |
+| [Qefira](https://web.archive.org/web/20230530142104/https://www.qefira.com/property-rentals-sales/addis-ababa) | 8121 |
+| [Ethiopia Property Centre](https://ethiopiapropertycentre.com/addis-ababa) | 3649 |
+| [Engocha](https://engocha.com/classifieds) | 2059 |
+| [Real Ethio](https://www.realethio.com/search-result-page/?location%5B%5D=addis-ababa) | 1585 |
+| [Airbnb Addis Ababa](https://www.airbnb.com/s/Addis%20Ababa-Ababa--Ethiopia/homes?adults=) | 1000 |
+| [EthiopianHome](https://www.ethiopianhome.com/city/addis_ababa-1/) | 990 |
+| [Ethiopian Properties](https://www.ethiopianproperties.com/property-type/residential/) | 880 |
+| [Sarrbet](https://sarrbet.com/with-list-layout/) | 741 |
+| [Ethiopia Realty](https://ethiopiarealty.com/search-results/?location%5B%5D=addis-ababa) | 717 |
+| [Ermithe Ethiopia](https://ermitheethiopia.com/all-ads/listing-category/property/) | 645 |
+| [LiveEthio](https://livingethio.com/site/property) | 625 |
+| [ZeGebeya.com](https://zegebeya.com/properties/) | 560 |
+| [Zerzir](https://zerzir.com/ads/real-estate/) | 539 |
+| [Real Addis](https://www.realaddis.com/property-search/) | 513 |
+| [Beten](https://betenethiopia.com/) | 495 |
+| [Kemezor](https://et.kemezor.com/products?type=house&city=addis%20ababa) | 434 |
+| [HahuZon](https://hahuzon.com/listing-category/property-rentals-sales/) | 400 |
+| [Ethiobetoch](https://www.ethiobetoch.com/propertylisting) | 315 |
+| [Verenda](https://www.verenda.et/) | 285 |
+| [Mondinion](https://www.mondinion.com/Real_Estate/country/Ethiopia/) | 268 |
+| [Yegna Home](https://yegnahome.com/search-result-page?propertyType=Apartment) | 247 |
+| [Expat](https://www.expat.com/en/housing/africa/ethiopia/addis-ababa/) | 233 |
+| [Keys to Addis](https://keystoaddis.com/search-results/?keyword=&location%5B%5D=addis-ababa) | 219 |
+| [Ebuy](https://www.ebuy.et/properties?type=property) | 216 |
+| [Addis Agents](https://rentinaddisagent.com/listing/) | 195 |
+| [Rent in Addis Agent](https://www.addisagents.com/property-types/residential/) | 175 |
+| [Betoch](https://www.betoch.com/property/) | 126 |
+| [Sheger Home](https://shegerhome.com/) | 120 |
+| [Ethio Broker](https://www.ethiobroker.com/property/filter?is_rental=0) | 105 |
+| [Betbegara](https://www.betbegara.com/) | 83 |
+| [Addis Property Listings](https://addispropertylistings.com/all-properties) | 76 |
+| [Shega Home](https://shegahome.com/properties) | 60 |
+| [Realtor Ethiopia](https://realtor.com.et/store/) | 33 |
+| [Addis Gojo](https://addisgojo.com) | 32 |
+| Notes: The number of ads is as of April 2024. Qefira shut down in June 2023. |  |
+
+</div>
 
 </details>
 

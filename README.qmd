@@ -15,6 +15,11 @@ execute:
 This repo contains **replication code** and **data** for the paper [Beze (2024)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4803607).
 
 The real estate dataset is available on [Zenodo](https://zenodo.org/records/11205969). For more details, see the [data section](#housing-data) below.
+
+> Listen to an ai-generated podcast about this project, thanks to [NotebookLM](https://notebooklm.google.com).
+
+[](https://github-production-user-asset-6210df.s3.amazonaws.com/49317723/399504592-cd420903-d663-453b-8fad-48988c7df2c5.webm)
+
 :::
 
 
@@ -92,7 +97,7 @@ description |>
 </details>
 
 
-If you want to reproduce the data using the scripts, you can follow the steps in [script/main.sh](./script/main.sh). 
+If you want to reproduce the data using the scripts, you can follow the steps in [script/main.sh](./script/main.sh).
 
 > If you run the scripts successfully, you will have:
 > The primary dataset for the analysis is constructed from [data/housing/processed/listings_cleaned.csv](data/housing/processed/listings_cleaned.csv), a cleaned version of the scraped data from all providers. The raw data is available in [data/housing/raw](data/housing/raw) for the providers included in the analysis. Missing attributes in the dataset are imputed using [`Gemini Pro`](https://github.com/google-gemini/generative-ai-python), and the imputed data can be found in [data/housing/processed/structured/tidy](data/housing/processed/structured/tidy/). Finally, property addresses are geocoded using [Google Places API](https://developers.google.com/maps/documentation/places/web-service) and [OSM nominatim](https://nominatim.openstreetmap.org/ui/search.html). The georeferenced data is available in [data/housing/processed/tidy/listings_cleaned_tidy\_\_geocoded.csv](data/housing/processed/tidy/listings_cleaned_tidy__geocoded.csv).
